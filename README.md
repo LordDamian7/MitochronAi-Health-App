@@ -11,3 +11,20 @@ Key features include:
  • Context-aware health suggestions (e.g., malaria, typhoid relevance)
 
 ⚠️ Disclaimer: MitochronAI does not provide medical diagnoses and is not a substitute for professional healthcare.
+
+## Run it
+```bash
+python -m venv .venv
+.venv\Scripts\activate          # Windows (macOS/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+copy .env.example .env          # then add your OpenAI API key (macOS/Linux: cp)
+streamlit run app.py
+```
+
+## How it works
+- `safety.py` screens for emergency keywords **before** any AI call; an emergency is flagged by fixed rules, never left to the model.
+- `triage_engine.py` asks the model for possible conditions and an urgency level, and parses the JSON it returns.
+- `config.py` reads settings from the environment.
+
+## Licence
+MIT, see [LICENSE](LICENSE).
